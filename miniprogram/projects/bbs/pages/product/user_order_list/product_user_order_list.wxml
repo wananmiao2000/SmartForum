@@ -1,0 +1,34 @@
+<view wx:if="{{!isLoad}}" class="margin-top load loading text-l load-project"></view>
+<block wx:else>
+	<cmpt-comm-list showSearch="{{false}}" sortMenusDefaultIndex="0" type="product-user-order-list" search="{{search||''}}" _params="{{_params}}" _menus="{{sortMenus}}" _items="{{sortItems}}" isTotalMenu="{{true}}" route="product/user_order_list" topBottom="120" placeholder="搜索贴子" bind:list="bindCommListCmpt">
+
+		<!-- List Begin -->
+
+		<view class="list">
+			<view class="item shadow-project" bindtap="url" data-url="../../product/user_detail/product_user_detail?id={{item.USER_MINI_OPENID}}" wx:for="{{dataList.list}}" wx:key="key">
+				<view class="no">{{index+1}}</view>
+				<view class="left">
+					<image mode="aspectFill" lazy-load="{{true}}" class="loading" src="{{item.USER_PIC}}">
+					</image>
+				</view>
+				<view class="right">
+					<view class="line1">
+						<view class="title content-cut-two">{{item.USER_NAME}}<text wx:if="{{item.USER_OBJ.sex=='男'}}" class="sex bg-blue light"><text class="icon-male"></text></text><text wx:elif="{{item.USER_OBJ.sex=='女'}}" class="sex bg-red light"><text class="icon-female"></text></text></view>
+					</view>
+					<view class="line2 margin-top-xs">发贴{{item.USER_PRODUCT_CNT}}篇，关注{{item.USER_MY_FAV_CNT}}人，粉丝{{item.USER_FAV_CNT}}人，被浏览{{item.USER_VIEW_CNT}}次</view>
+					<view class="line2">{{item.last}}</view>
+				</view>
+			</view>
+		</view>
+
+		<!-- List END -->
+
+		<!--load begin-->
+		<import src="../../../../../tpls/public/list_load_tpl.wxml" />
+		<template is="listLoadTpl" data="{{skin:'load-project',dataList}}" />
+		<!--load end-->
+	</cmpt-comm-list>
+
+	<view bindtap="url" data-type="relaunch" data-url="../../default/index/default_index" class="fixed-home-btn" style="bottom: calc(constant(safe-area-inset-bottom) + 180rpx);bottom: calc(env(safe-area-inset-bottom) + 180rpx)"><text class="icon-home"></text><text style="font-size:22rpx;">首页</text></view>
+
+</block>

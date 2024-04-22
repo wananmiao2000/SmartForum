@@ -1,0 +1,111 @@
+{
+	"pages": [
+		"projects/bbs/pages/default/index/default_index",
+		"projects/bbs/pages/about/index/about_index",
+		"projects/bbs/pages/default/web/web",
+		"projects/bbs/pages/search/search",
+		"projects/bbs/pages/my/index/my_index",
+		"projects/bbs/pages/my/reg/my_reg",
+		"projects/bbs/pages/my/edit/my_edit",
+		"projects/bbs/pages/my/foot/my_foot",
+		"projects/bbs/pages/my/fav/my_fav",
+		"projects/bbs/pages/product/cate1/product_cate1",
+		"projects/bbs/pages/product/cate2/product_cate2",
+		"projects/bbs/pages/product/order/product_order",
+		"projects/bbs/pages/product/index/product_index",
+		"projects/bbs/pages/product/detail/product_detail",
+		"projects/bbs/pages/product/add/product_add",
+		"projects/bbs/pages/product/my_post/product_my_post",
+		"projects/bbs/pages/product/edit/product_edit",
+		"projects/bbs/pages/product/my_list/product_my_list",
+		"projects/bbs/pages/product/user_detail/product_user_detail",
+		"projects/bbs/pages/product/user_order_list/product_user_order_list",
+		"projects/bbs/pages/admin/product/list/admin_product_list",
+		"projects/bbs/pages/admin/product/add/admin_product_add",
+		"projects/bbs/pages/admin/product/edit/admin_product_edit",
+		"projects/bbs/pages/admin/setup/about/admin_setup_about",
+		"projects/bbs/pages/admin/setup/about_list/admin_setup_about_list",
+		"projects/bbs/pages/admin/setup/qr/admin_setup_qr",
+		"projects/bbs/pages/admin/setup/swiper/admin_setup_swiper",
+		"projects/bbs/pages/admin/index/home/admin_home",
+		"projects/bbs/pages/admin/index/login/admin_login",
+		"projects/bbs/pages/admin/content/admin_content",
+		"projects/bbs/pages/admin/mgr/log/admin_log_list",
+		"projects/bbs/pages/admin/mgr/edit/admin_mgr_edit",
+		"projects/bbs/pages/admin/mgr/list/admin_mgr_list",
+		"projects/bbs/pages/admin/mgr/add/admin_mgr_add",
+		"projects/bbs/pages/admin/mgr/pwd/admin_mgr_pwd",
+		"projects/bbs/pages/admin/user/list/admin_user_list",
+		"projects/bbs/pages/admin/user/detail/admin_user_detail",
+		"projects/bbs/pages/admin/user/export/admin_user_export",
+		"projects/bbs/pages/admin/cate1/list/admin_cate1_list",
+		"projects/bbs/pages/admin/cate1/add/admin_cate1_add",
+		"projects/bbs/pages/admin/cate1/edit/admin_cate1_edit",
+		"projects/bbs/pages/admin/cate2/list/admin_cate2_list",
+		"projects/bbs/pages/admin/cate2/add/admin_cate2_add",
+		"projects/bbs/pages/admin/cate2/edit/admin_cate2_edit",
+		"projects/bbs/pages/comment/list/comment_list",
+		"projects/bbs/pages/comment/add/comment_add",
+		"projects/bbs/pages/comment/my_list/comment_my_list",
+		"projects/bbs/pages/product/my_fav_user/product_my_fav_user",
+		"cmpts/public/form/form_set/field/form_set_field",
+		"cmpts/public/form/form_show/content/form_show_content",
+		"pages/test1/test1"
+	],
+	"window": {
+		"backgroundColor": "#f1f1f1",
+		"backgroundTextStyle": "dark",
+		"navigationBarBackgroundColor": "#4C589A",
+		"navigationBarTitleText": "论坛小程序",
+		"navigationBarTextStyle": "white"
+	},
+	"tabBar": {
+		"custom": false,
+		"backgroundColor": "#FFFFFF",
+		"color": "#999999",
+		"selectedColor": "#4C589A",
+		"list": [
+			{
+				"pagePath": "projects/bbs/pages/default/index/default_index",
+				"text": "首页",
+				"iconPath": "/projects/bbs/images/tabbar/home.png",
+				"selectedIconPath": "/projects/bbs/images/tabbar/home_cur.png"
+			},
+			{
+				"pagePath": "projects/bbs/pages/product/cate1/product_cate1",
+				"text": "栏目",
+				"iconPath": "/projects/bbs/images/tabbar/sort.png",
+				"selectedIconPath": "/projects/bbs/images/tabbar/sort_cur.png"
+			},
+			{
+				"pagePath": "projects/bbs/pages/product/add/product_add",
+				"text": "发贴",
+				"iconPath": "/projects/bbs/images/tabbar/add.png",
+				"selectedIconPath": "/projects/bbs/images/tabbar/add_cur.png"
+			},
+			{
+				"pagePath": "projects/bbs/pages/product/order/product_order",
+				"text": "排行",
+				"iconPath": "/projects/bbs/images/tabbar/order.png",
+				"selectedIconPath": "/projects/bbs/images/tabbar/order_cur.png"
+			},
+			{
+				"pagePath": "projects/bbs/pages/my/index/my_index",
+				"text": "我的",
+				"iconPath": "/projects/bbs/images/tabbar/my.png",
+				"selectedIconPath": "/projects/bbs/images/tabbar/my_cur.png"
+			}
+		]
+	},
+	"permission": {
+		"scope.userLocation": {
+			"desc": "获取你当前位置信息用于小程序位置接口的效果展示"
+		}
+	},
+	"usingComponents": {
+		"cmpt-comm-list": "/cmpts/public/list/comm_list_cmpt",
+		"cmpt-picker": "/cmpts/public/picker/picker_cmpt",
+		"cmpt-modal": "/cmpts/public/modal/modal_cmpt"
+	},
+	"sitemapLocation": "sitemap.json"
+}

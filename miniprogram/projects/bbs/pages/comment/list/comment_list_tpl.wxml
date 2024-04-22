@@ -1,0 +1,47 @@
+<!-- List Begin -->
+<view class="comment-list">
+	<view class="item" wx:for="{{dataList.list||product.commentList}}" wx:key="k">
+		<view class="left"  bind:tap="url" data-url="../../product/user_detail/product_user_detail?id={{item.user.USER_MINI_OPENID}}">
+			<text wx:if="{{item.user.USER_OBJ.sex=='男'}}" class="sex bg-blue light"><text class="icon-male"></text></text>
+			<text wx:elif="{{item.user.USER_OBJ.sex=='女'}}" class="sex bg-red light"><text class="icon-female"></text></text>
+			<image class="loading shadow-project" mode="aspectFill" lazy-load="{{true}}" src="{{item.user.USER_PIC}}"></image>
+		</view>
+		<view class="right">
+			<view class="line1" bind:tap="url" data-url="../../product/user_detail/product_user_detail?id={{item.user.USER_MINI_OPENID}}">
+				<text>{{item.user.USER_NAME}} </text>
+				<text wx:if="{{nowUserId==item.COMMENT_USER_ID}}" class="tag small radius bg-purple light margin-left-xs">我</text>
+			</view>
+			<view class="line2">
+				<view>第{{index+1}}楼</view>
+				<view class="xx margin-left-xs margin-right-xs">|</view>
+				<view>{{item.COMMENT_ADD_TIME}}</view>
+				<view class="xx margin-left-xs margin-right-xs">|</view>
+				<view bind:tap="bindLikeCommentTap" data-id="{{item._id}}" data-idx="{{index}}" class="like"><text class="icon-appreciate{{item.like?'fill':''}}" style="font-size: 32rpx;"><text style="font-size: 24rpx;">{{item.COMMENT_LIKE_CNT}}</text></text></view>
+			</view>
+
+			<view class="content"><text>{{item.COMMENT_OBJ.content}}</text></view>
+
+			<view class="album">
+				<image bindtap="url" data-type="img" data-imgs="{{item.COMMENT_OBJ.img}}" data-url="{{itm}}" wx:for="{{item.COMMENT_OBJ.img}}" wx:key="key1" wx:for-item="itm" class="loading  img{{item.COMMENT_OBJ.img.length}}" mode="aspectFill" lazy-load="{{true}}" src="{{itm}}"></image>
+			</view>
+
+			<view class="oprt" wx:if="{{nowUserId==item.COMMENT_USER_ID||isAdmin}}">
+				<view bindtap="bindDelCommentTap" data-id="{{item._id}}" class="tag text-red light mid radius text-orange"><text class="icon-delete"></text>删除</view>
+			</view>
+
+
+		</view>
+
+
+	</view>
+
+
+	<block wx:if="{{dataList.list}}">
+		<!--load begin-->
+		<import src="../../../../../tpls/public/list_load_tpl.wxml" />
+		<template is="listLoadTpl" data="{{skin:'load-project',dataList}}" />
+		<!--load end-->
+	</block>
+
+</view>
+<!-- List END -->

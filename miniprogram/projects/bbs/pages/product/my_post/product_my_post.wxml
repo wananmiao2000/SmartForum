@@ -1,0 +1,49 @@
+<view wx:if="{{!isLoad}}" class="margin-top load loading text-l load-project"></view>
+<block wx:else>
+
+	<cmpt-comm-list sortMenusDefaultIndex="0" type="product-my-list" search="{{search||''}}" _params="{{_params}}" _menus="{{sortMenus}}" _items="{{sortItems}}" isTotalMenu="{{true}}" route="product/my_list" topBottom="120" placeholder="搜索标题" bind:list="bindCommListCmpt">
+
+		<view slot="searchEnd"> 
+			<button bindtap="url" data-type="relaunch" data-url="../add/product_add" class="btn radius bg-project text-white margin-right text-s">发新贴</button>
+		</view>
+
+		<!-- List Begin -->
+
+		<view class="list">
+			<view class="item shadow-project" wx:for="{{dataList.list}}" wx:key="key">
+				<view class="left">
+					<view class="line1">
+						<view class="title content-cut-two">
+							<text>{{item.PRODUCT_TITLE}}</text>
+						</view>
+					</view>
+					<view class="line2">
+						<text class="margin-right-s">#{{item.PRODUCT_CATE_NAME}}</text>
+					
+						<text wx:if="{{item.PRODUCT_STATUS==1}}" class="text-green">正常</text>
+						<text wx:elif="{{item.PRODUCT_STATUS==98}}" class="text-red">审核未过，待修改</text>
+						<text wx:elif="{{item.PRODUCT_STATUS==99}}" class="text-orange">待审核</text>
+						<text wx:elif="{{item.PRODUCT_STATUS==0}}" class="text-red">停用</text>
+
+						<text class="margin-right-s">{{item.PRODUCT_ADD_TIME}}</text>
+					</view>
+					<view class="line3">
+						<view bind:tap="url" data-url="../detail/product_detail?id={{item._id}}"><text class="icon-attention margin-right-xxs"></text>预览</view> 
+
+						<view bind:tap="url" data-url="../edit/product_edit?id={{item._id}}" wx:if="{{item.PRODUCT_STATUS!=0}}"><text class="icon-edit margin-right-xxs"></text>修改</view>
+
+						<view bind:tap="bindDelTap" data-id="{{item._id}}" class="text-grey"><text class="icon-delete margin-right-xxs"></text>删除</view> 
+					</view>
+				</view>
+			</view>
+		</view>
+
+		<!-- List END -->
+
+		<!--load begin-->
+		<import src="../../../../../tpls/public/list_load_tpl.wxml" />
+		<template is="listLoadTpl" data="{{skin:'load-project',dataList}}" />
+		<!--load end-->
+	</cmpt-comm-list>
+
+</block>

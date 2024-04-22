@@ -1,0 +1,116 @@
+@import "../../../style/skin.wxss";
+
+.tabs scroll-view {
+	text-align: center !important;
+}
+
+.list {
+	width: 100%;
+	box-sizing: border-box;
+	padding: 20rpx 20rpx 30rpx 20rpx;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	overflow: hidden;
+}
+
+.list .item {
+	padding: 22rpx 22rpx;
+	display: flex;
+	border-radius: 10rpx;
+	margin-bottom: 20rpx;
+	position: relative;
+	background-color: #fff;
+	overflow: hidden;
+}
+
+.list .item .no {
+	font-size: 30rpx;
+	font-family: 'din';
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	top: 4rpx;
+	right: 14rpx;
+	z-index: 999; 
+	color: #ccc;
+}
+
+.list .item:nth-child(1) .no {
+	color: var(--red);
+}
+
+.list .item:nth-child(2) .no {
+	color: var(--orange);
+}
+
+.list .item:nth-child(3) .no {
+	color: var(--yellow);
+}
+
+.list .item:nth-child(-n+3) .no {
+	font-weight: bold;
+	font-size: 36rpx;
+	font-style: italic;
+	right: 20rpx !important;
+}
+
+.list .item .left {
+	width: 120rpx;
+	height: 120rpx;
+	border-radius: 50%;
+	margin-right: 20rpx;
+}
+
+
+.list .item .left>image {
+	width: inherit;
+	height: inherit;
+	border-radius: inherit;
+}
+
+.list .item .right {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: 6rpx 0;
+}
+
+.list .item .right .line1 {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.list .item .right .line1 .title {
+	font-size: 28rpx;
+	color: #000;
+	display: flex;
+	align-items: center;
+}
+
+.list .item .right .line1 .title .sex {
+	font-size: 20rpx;
+	border-radius: 30%;
+	font-weight: bold;
+	margin-left: 10rpx;
+	padding: 2rpx;
+	z-index: 9;
+}
+
+
+
+.list .item .right .line2 {
+	width: 100%;
+	font-size: 22rpx;
+	color: #bbb;
+	text-align: left;
+	font-family: "din";
+	font-weight: normal;
+}
+
+.list .item .right .line2>text {
+	margin-right: 20rpx;
+}

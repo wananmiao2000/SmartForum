@@ -1,0 +1,68 @@
+<view wx:if="{{!isLoad}}" class="margin-top load loading text-l load-project"></view>
+<block wx:else> 
+	<cmpt-comm-list showSearch="{{showSearch}}" sortMenusDefaultIndex="0" type="product-list" search="{{search||''}}" _params="{{_params}}" _menus="{{sortMenus}}" _items="{{sortItems}}" isTotalMenu="{{true}}" route="product/list" topBottom="120" placeholder="搜索贴子" bind:list="bindCommListCmpt">
+
+		<view slot="searchEnd">
+			<button bindtap="url" data-type="relaunch" data-url="../add/product_add" class="btn round bg-project text-white margin-right text-s">发新贴</button>
+		</view>
+
+		<view class="cate-list" wx:if="{{cate2List.length>0}}">
+			<view bind:tap="bindSearchTap" data-search="{{item}}" class="item {{search==item?'bg-purple light':''}}" wx:for="{{cate2List}}" wx:key="key">{{item}}</view>
+		</view>
+		<!-- List Begin -->
+
+		<view class="list">
+			<view class="item shadow-project" bindtap="url" data-url="../../product/detail/product_detail?id={{item._id}}" wx:for="{{dataList.list}}" wx:key="key">
+				<view class="left">
+					<view class="line1">
+						<view class="title content-cut-two">
+							<text wx:if="{{item.PRODUCT_GOOD==1}}" class="good">精</text>
+							<block wx:if="{{item.searchTitle}}"><text wx:if="{{item.PRODUCT_ORDER==0}}" class="top">置顶</text>
+								<text wx:for="{{item.searchTitle}}" wx:key="key2" wx:for-item="itm" class="{{itm===search?'text-red text-bold':''}}">{{itm}}</text>
+							</block>
+							<text wx:else><text wx:if="{{item.PRODUCT_ORDER==0}}" class="top">置顶</text>{{item.PRODUCT_TITLE}}</text>
+						</view>
+					</view>
+					<view class="author" wx:if="{{item.PRODUCT_METHOD==0}}">
+						<view class="txt"><text class="icon-newshot margin-right-xxs"></text>平台发布</view>
+						<view class="time">{{item.PRODUCT_ADD_TIME}}</view>
+					</view>
+					<view class="author" wx:elif="{{item.PRODUCT_METHOD==1}}">
+						<image lazy-load="{{true}}" mode=" aspectFill" src="{{item.user.USER_PIC}}" class="loading" />
+						<view class="txt">{{item.user.USER_NAME}}</view>
+						<view class="time">{{item.PRODUCT_ADD_TIME}}</view>
+					</view>
+					<view wx:if="{{item.PRODUCT_PIC.length>=2}}" class="pic-line">
+						<image wx:for="{{item.PRODUCT_PIC}}" wx:key="ke1" wx:for-item="itm" wx:for-index="idx" mode="aspectFill" lazy-load="{{true}}" wx:if="{{idx<3}}" class="loading" src="{{itm}}" />
+
+					</view>
+					<view class="line2">
+						<text wx:if="{{cateId&&item.cateName2}}">{{item.cateName2}}</text>
+						<text wx:if="{{!cateId}}">{{item.cateName}}</text>
+
+						<text><text class="icon-favor margin-right-xxxs"></text>{{item.PRODUCT_FAV_CNT}}</text>
+						<text><text class="icon-appreciate margin-right-xxxs"></text>{{item.PRODUCT_LIKE_CNT}}</text>
+						<text><text class="icon-comment margin-right-xxxs"></text>{{item.PRODUCT_COMMENT_CNT}}</text>
+						<text><text class="icon-attention margin-right-xxxs"></text>{{item.PRODUCT_VIEW_CNT}}</text>
+					</view>
+				</view>
+				<view class="right" wx:if="{{item.PRODUCT_PIC.length>0 && item.PRODUCT_PIC.length==1}}">
+					<image mode="aspectFill" lazy-load="{{true}}" class="loading" src="{{item.PRODUCT_PIC[0]}}">
+					</image>
+				</view>
+
+
+			</view>
+		</view>
+
+		<!-- List END -->
+
+		<!--load begin-->
+		<import src="../../../../../tpls/public/list_load_tpl.wxml" />
+		<template is="listLoadTpl" data="{{skin:'load-project',dataList}}" />
+		<!--load end-->
+	</cmpt-comm-list>
+
+	<view bindtap="url" data-type="relaunch" data-url="../../default/index/default_index" class="fixed-home-btn" style="bottom: calc(constant(safe-area-inset-bottom) + 180rpx);bottom: calc(env(safe-area-inset-bottom) + 180rpx)"><text class="icon-home"></text><text style="font-size:22rpx;">首页</text></view>
+
+</block>

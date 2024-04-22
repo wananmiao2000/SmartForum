@@ -1,0 +1,210 @@
+@import "../../../style/skin.wxss";
+
+.user {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	background-color: #fff;
+}
+
+.user .line1 {
+	width: 100%;
+	display: flex;
+	padding: 20rpx 30rpx;
+	align-items: center;
+}
+
+.user .line1 .left {
+	width: 110rpx;
+	height: 110rpx;
+	border-radius: 50%;
+	margin-right: 30rpx;
+}
+
+.user .line1 .right {
+	flex: 1;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	padding: 10rpx 0;
+}
+
+.user .line1 .right .name {
+	font-size: 30rpx;
+}
+
+.user .line1 .right .name .sex {
+	font-size: 24rpx;
+	border-radius: 30%;
+	font-weight: bold;
+	margin-left: 10rpx;
+	padding: 4rpx;
+	z-index: 9;
+}
+
+.user .line1 .right .desc {
+	font-size: 22rpx;
+	color: #999;
+	margin-top: 6rpx;
+}
+
+.user .line1 .at {
+	background-color: var(--projectColorLight);
+	font-size: 24rpx;
+	color: #fff;
+	border-radius: 30rpx;
+	padding: 10rpx 30rpx;
+	margin-left: 10rpx;
+}
+
+.user .line2 {
+	width: 100%;
+	display: flex;
+	padding: 20rpx 0;
+}
+
+.user .line2 .item {
+	width: 33.33%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.user .line2 .item:nth-child(1),
+.user .line2 .item:nth-child(2),
+.user .line2 .item:nth-child(3) {
+	border-right: 2rpx dotted #ccc;
+}
+
+.user .line2 .item .t1 {
+	font-size: 30rpx;
+	font-weight: bold;
+}
+
+.user .line2 .item .t2 {
+	font-size: 24rpx;
+	color: #999;
+	margin-top: 10rpx;
+}
+
+.list {
+	width: 100%;
+	box-sizing: border-box;
+	padding: 20rpx 20rpx 30rpx 20rpx;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	overflow: hidden;
+}
+
+.list .item {
+	padding: 22rpx 22rpx;
+	display: flex;
+	border-radius: 10rpx;
+	margin-bottom: 20rpx;
+	position: relative;
+	background-color: #fff;
+	overflow: hidden;
+	min-height: 150rpx;
+}
+
+.list .item .time {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-right: 24rpx;
+}
+
+.list .item .time .t1 {
+	font-size: 36rpx;
+	text-align: center;
+	color: #333;
+	font-weight: bold;
+}
+
+.list .item .time .t2 {
+	font-size: 22rpx;
+	text-align: center;
+	color: #999;
+}
+
+.list .item .left {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.list .item .left .line1 {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.list .item .left .pic-line {
+	width: 100%;
+	display: flex;
+}
+
+.list .item .left .pic-line image {
+	width: calc((100% - 40rpx) / 3);
+	height: 130rpx;
+	border-radius: 6rpx; 
+	margin: 14rpx 0;
+}
+
+.list .item .left .pic-line image:nth-child(2) {
+	margin-left: 20rpx;
+	margin-right: 20rpx;
+}
+
+.list .item .left .line1 .title {
+	font-size: 28rpx;
+	color: #000;
+}
+
+.list .item .left .line1 .title .top {
+	font-size: 22rpx;
+	padding: 6rpx 10rpx;
+	border-radius: 4rpx;
+	margin-right: 8rpx;
+	background-color: #66A3FF;
+	color: #fff;
+}
+
+.list .item .left .line1 .title .good {
+	font-size: 22rpx;
+	padding: 6rpx 10rpx;
+	border-radius: 4rpx;
+	margin-right: 8rpx;
+	background-color: #FF6666;
+	color: #fff;
+}
+
+.list .item .left .line2 {
+	width: 100%;
+	font-size: 22rpx;
+	color: #bbb;
+	text-align: left;
+	font-family: "din";
+	font-weight: normal;
+}
+
+.list .item .left .line2>text {
+	margin-right: 20rpx;
+}
+
+.list .item .right {
+	width: 190rpx;
+	height: 124rpx;
+	border-radius: 6rpx;
+	margin-left: 20rpx;
+	position: relative;
+} 
+
+.list .item .right>image {
+	width: inherit;
+	height: inherit;
+	border-radius: inherit;
+}

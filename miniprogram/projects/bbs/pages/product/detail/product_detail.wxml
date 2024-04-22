@@ -1,0 +1,69 @@
+<view wx:if="{{isLoad===null}}" class="margin-top load notexist text-l load-project"></view>
+<view wx:if="{{isLoad===false}}" class="margin-top load loading text-l load-project"></view>
+
+<block wx:if="{{isLoad}}">
+	<view class="main">
+
+		<view class="detail card-project shadow-project">
+
+			<view class="title"><text user-select="true">{{product.PRODUCT_TITLE}}</text></view>
+
+			<view class="author" wx:if="{{product.PRODUCT_METHOD==0}}">
+				<view class="txt"><text class="icon-newshot margin-right-xxs"></text>平台发布</view>
+				<view class="time">{{product.PRODUCT_ADD_TIME}}</view>
+			</view>
+			<view class="author" wx:elif="{{product.PRODUCT_METHOD==1}}" bind:tap="url" data-url="../user_detail/product_user_detail?id={{product.PRODUCT_USER_ID}}">
+				<image lazy-load="{{true}}" mode=" aspectFill" src="{{product.user.USER_PIC}}" class="loading" />
+				<view class="txt">{{product.user.USER_NAME}}</view>
+				<view class="time">{{product.PRODUCT_ADD_TIME}}</view>
+			</view>
+
+			<view class="line2">
+				<text class="text-project">{{product.PRODUCT_CATE_NAME}}</text>
+				<text><text class="icon-favor margin-right-xxxs"></text>{{product.PRODUCT_FAV_CNT}}</text>
+				<text><text class="icon-appreciate margin-right-xxxs"></text>{{product.PRODUCT_LIKE_CNT}}</text>
+				<text><text class="icon-comment margin-right-xxxs"></text>{{product.PRODUCT_COMMENT_CNT}}</text>
+				<text><text class="icon-attention margin-right-xxxs"></text>{{product.PRODUCT_VIEW_CNT}}</text>
+			</view>
+
+			<view style="height: 30rpx;"></view>
+			<block wx:for="{{product.PRODUCT_OBJ.content}}" wx:key="key">
+				<view class="content" wx:if="{{item.type=='text'}}">
+					<text user-select="{{true}}">{{item.val}}</text>
+				</view>
+
+				<view class="pics" wx:if="{{item.type=='img'}}">
+					<image bindtap="url" data-type='img' data-url="{{item.val}}" class="loading" mode='widthFix' lazy-load="true" src="{{item.val}}">
+					</image>
+				</view>
+			</block>
+			<view style="height: 30rpx;"></view>
+
+		</view>
+
+		<view class="detail card-project shadow-project margin-top" id="comment">
+			<view  class="comment-title"><text class="icon-commentfill margin-right-xxs"></text>最新评论</view>
+			<!-- List Begin -->
+
+			<view class="comment-no">
+				<image mode="widthFix" wx:if="{{!product.commentList||product.commentList.length==0}}" src="../../../images/no.jpg" /> 
+			</view>
+		
+			<include src="../../comment/list/comment_list_tpl.wxml" />
+			<!-- List END -->
+			<view bind:tap="url" data-url="../../comment/list/comment_list?id={{product._id}}" class="comment-view">查看全部评论 <text class="icon-roundright"></text></view>
+		</view>
+
+	</view>
+
+	<view style="height: 130rpx;"></view>
+
+	<cmpt-detail mode="mode2" topBtnShow="{{topBtnShow}}" oid="{{product._id}}" cate="{{product.PRODUCT_CATE_NAME}}" title="{{product.PRODUCT_TITLE}}" cover="{{product.PRODUCT_PIC.length>0?product.PRODUCT_PIC[0]:'/projects/bbs/images/cover.jpg'}}" qr="{{product.PRODUCT_QR}}" desc="查看详情" bg="{{skin.PROJECT_COLOR}}">
+		<view class="bottom-line"> 
+			<view bind:tap="url" data-url="../../comment/add/comment_add?id={{product._id}}" class="bt bg-purple light   margin-right"><text class="icon-comment margin-right-xxs"></text>写评论</view>
+
+			<view bind:tap="bindLikeTap" class="bt {{product.like?'bg-project':'bg-purple light'}}"><text class="icon-appreciate{{product.like?'fill':''}} margin-right-xxs"></text>{{product.like?'已点赞':'点赞'}} </view>
+		</view>
+
+	</cmpt-detail>
+</block>

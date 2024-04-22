@@ -1,0 +1,36 @@
+<template name="menuTpl">
+	<view class="tab-bar">
+		<view wx:if="{{returnHome}}" class="tab-bar-home" bindtap="url" data-type="relaunch" data-url="/pages/home/index/home_index">
+			<text class="tab-bar-home-text icon-homefill text-grey"></text>
+		</view>
+
+		<view class="tab-bar-border"></view>
+		<view class="tab-bar-item" bindtap="url" data-type="relaunch" data-url="/projects/bbs/pages/default/index/default_index">
+			<image class="tab-icon" src="/projects/bbs/images/tabbar/home{{curMenu=='home_index'?'_cur':''}}.png"></image>
+			<view class="tab-text {{curMenu=='home_index'?'menu-project':''}}">首页</view>
+		</view>
+
+		<view class="tab-bar-item" bindtap="url" data-type="relaunch" data-url="/projects/bbs/pages/product/cate1/product_cate1">
+			<image class="tab-icon" src="/projects/bbs/images/tabbar/sort{{curMenu=='product_cate1'?'_cur':''}}.png"></image>
+			<view class="tab-text {{curMenu=='product_cate1'?'menu-project':''}}">栏目</view>
+		</view>
+
+		<view class="tab-bar-item" bindtap="url" data-type="relaunch" data-url="/projects/bbs/pages/product/add/product_add">
+			<image class="tab-icon" src="/projects/bbs/images/tabbar/add{{curMenu=='product_add'?'_cur':''}}.png"></image>
+			<view class="tab-text {{curMenu=='product_add'?'menu-project':''}}">发贴</view>
+		</view>
+
+		<view class="tab-bar-item" bindtap="url" data-type="relaunch" data-url="/projects/bbs/pages/product/order/product_order">
+			<image class="tab-icon" src="/projects/bbs/images/tabbar/order{{curMenu=='product_order'?'_cur':''}}.png"></image>
+			<view class="tab-text {{curMenu=='product_order'?'menu-project':''}}">排行</view>
+		</view>
+
+
+		<view class="tab-bar-item" bindtap="url" data-type="relaunch" data-url="/projects/bbs/pages/my/index/my_index">
+			<image class="tab-icon" src="/projects/bbs/images/tabbar/my{{curMenu=='my_index'?'_cur':''}}.png"></image>
+			<view class="tab-text {{curMenu=='my_index'?'menu-project':''}}">我的</view>
+		</view>
+
+
+	</view>
+</template>

@@ -1,0 +1,19 @@
+<block wx:if="{{isLoad}}">
+	<cmpt-comm-list type="comment-list" search="{{search||''}}" _params="{{_params}}" _menus="{{sortMenus}}" _items="{{sortItems}}" route="comment/list" isTotalMenu="{{true}}" sortMenusDefaultIndex="0" topBottom="120" placeholder="搜索内容，用户" bind:list="bindCommListCmpt">
+
+
+		<!-- List Begin -->
+		<include src="comment_list_tpl.wxml" />
+		<!-- List END -->
+
+	</cmpt-comm-list>
+
+	<!--  button Begin -->
+	<!--  button END -->
+
+ 
+	<view wx:if="{{!isAdmin}}" class="post safe-bottom">
+		<view capture-bind:tap="url" data-type="redirect" data-url="../add/comment_add?id={{id}}&type={{type}}" class="inner shadow-project "><text class="icon-comment margin-right-xs"></text>写评论</view>
+	</view>
+
+</block>
